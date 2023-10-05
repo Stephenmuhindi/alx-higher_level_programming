@@ -10,5 +10,5 @@ if __name__ == "__main__":
         print("{} arguments:".format(count))
     for i, arg in enumerate(sys.argv[1:], start=1):
         print("{}: {}".format(i, arg))
-if len(sys.argv) == 1:
-    print(".")
+    if count == 0:
+        print(".")
