@@ -1,38 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lists.h"
+
 /**
- * is_palindrome - tests if linked list ni palindrome.
+ * is_palindrome - tests if linked list is palindrome.
  * @head: head pointer
- * Return: 0 if it is and 1 if its not.
+ * Return: 0 if it is and 1 if it's not.
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *current = *head;
-	int i, count;
+	listint_t *slow = *head;
+	listint_t *fast = *head;
 	int list_array[2048];
 
-	if (current == NULL)
+	int i = 0;
+
+	if (*head == NULL || (*head)->next == NULL)
 		return (1);
-	for (count = 0; current != NULL; count++, current = current->next)
-	if (count == 1)
-		return (1);
-	current = *head;
-	if (count % 2 == 0)
+	while (fast != NULL && fast->next != NULL)
 	{
-		for (i = 0; i < (count / 2); i++, current = current->next)
-			list_array[i] = current->n;
-		for (i = i - 1; i >= 0; i--, current = current->next)
-			if (list_array[i] != current->n)
-				return (0);
+		list_array[i] = slow->n;
+		slow = slow->next;
+		fast = fast->next->next;
+		i++;
 	}
-	else
+	if (fast != NULL)
 	{
-		for (i = 0; i <= (count / 2); i++, current = current->next)
-			list_array[i] = current->n;
-		for (i = i - 2; i >= 0; i--, current = current->next)
-			if (list_array[i] != current->n)
-				return (0);
+		slow = slow->next;
+	}
+	for (i = i - 1; i >= 0; i--)
+	{
+		if (list_array[i] != slow->n)
+		{
+			return (0);
+		}
+		slow = slow->next;
 	}
 	return (1);
 }
