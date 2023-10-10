@@ -1,9 +1,17 @@
 #!/usr/bin/python3
-import sys
-''' adds all integers au'''
-def main():
-    arguments = sys.argv[1:]
-    total = sum(int(arg) for arg in arguments)
-    print(total)
+from sys import argv
+argc = len(argv) - 1
+
+
+def sum_args():
+    sum = 0
+    for i in range(1, len(argv)):
+        sum += int(argv[i])
+    return sum
+
+
 if __name__ == "__main__":
-    main()
+    if (argc == 0):
+        print("{:d}".format(argc))
+    else:
+        print("{:d}".format(sum_args()))
