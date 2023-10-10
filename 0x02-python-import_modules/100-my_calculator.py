@@ -1,21 +1,28 @@
 #!/usr/bin/python3
-import argparse
+from calculator_1 import add, sub, mul, div
+from sys import argv
+
+
 def calculate(a, operator, b):
-    operators = {"+": lambda x, y: x + y,
-                 "-": lambda x, y: x - y,
-                 "*": lambda x, y: x * y,
-                 "/": lambda x, y: x / y if y != 0 else "Error: Division by zero"}
-    if operator in operators:
-        return operators[operator](a, b)
+    if operator == "+":
+        print("{:d} {} {:d} = {:d}".format(a, operator, b, add(a, b)))
+    elif operator == "-":
+        print("{:d} {} {:d} = {:d}".format(a, operator, b, sub(a, b)))
+    elif operator == "*":
+        print("{:d} {} {:d} = {:d}".format(a, operator, b, mul(a, b)))
+    elif operator == "/":
+        print("{:d} {} {:d} = {:d}".format(a, operator, b, div(a, b)))
     else:
-        return "Unknown operator. Available operators: +, -, * and /"
-def main():
-    parser = argparse.ArgumentParser(description="Handle basic arithmetic operations.")
-    parser.add_argument("a", type=int, help="First operand")
-    parser.add_argument("operator", choices=["+", "-", "*", "/"], help="Arithmetic operator")
-    parser.add_argument("b", type=int, help="Second operand")
-    args = parser.parse_args()
-    result = calculate(args.a, args.operator, args.b)
-    print(f"{args.a} {args.operator} {args.b} = {result}")
+        print("Unknown operator. Available operators: +, -, * and /")
+        exit(1)
+
+
 if __name__ == "__main__":
-    main()
+    if len(argv) != 4:
+        print("Usage: {} <a> <operator> <b>".format(argv[0]))
+        exit(1)
+    else:
+        a = int(argv[1])
+        operator = argv[2]
+        b = int(argv[3])
+        calculate(a, operator, b)
