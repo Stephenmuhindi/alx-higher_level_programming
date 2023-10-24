@@ -2,11 +2,11 @@
 """this is a square class"""
 
 
-class Square:
-    """defined methodand exceptions"""
-
-    def __init__(self, size=0):
+class Square():
+    """Defines modules attributes and classes."""
+    def __init__(self, size=0, position=(0, 0)):
         self.size = size
+        self.position = position
 
     @property
     def size(self):
@@ -22,32 +22,28 @@ class Square:
         else:
             raise TypeError("size must be an integer")
 
-    def area(self):
-        return self.__size * self.__size
-
     @property
     def position(self):
-        return (self.__position)
+        return self.__position
 
     @position.setter
     def position(self, value):
-        if (not isinstance(value, tuple) or
-                len(value) != 2 or
-                not all(isinstance(num, int) for num in value) or
-                not all(num >= 0 for num in value)):
+        if type(value) is tuple and len(value) == 2 and \
+            type(value[0]) is int and type(value[1]) is int and \
+                value[0] >= 0 and value[1] >= 0:
+            self.__position = value
+        else:
             raise TypeError("position must be a tuple of 2 positive integers")
-        self.__position = value
 
     def area(self):
-        return (self.__size * self.__size)
+        return self.__size ** 2
 
     def my_print(self):
-        if self.__size == 0:
-            print("")
-            return
-
-        [print("") for a in range(0, self.__position[1])]
-        for i in range(0, self.__size):
-            [print(" ", end="") for b in range(0, self.__position[0])]
-            [print("#", end="") for c in range(0, self.__size)]
-            print("")
+        if self.__size > 0:
+            for y in range(self.__position[1]):
+                print()
+            for x in range(self.__size):
+                print(' ' * self.__position[0], end='')
+                print('#' * self.__size)
+        else:
+            print()
