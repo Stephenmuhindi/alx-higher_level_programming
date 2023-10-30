@@ -1,0 +1,22 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation(3)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+>>> text_indentation()
+Traceback (most recent call last):
+...
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+>>> text_indentation("What is up baby doll?    how are you?")
+What is up baby doll?
+<BLANKLINE>
+how are you?
+<BLANKLINE>
+
+>>> text_indentation("Hola", "Commo Estas") #doctest: +ELLIPSIS
+Traceback (most recent call last):
+...
+TypeError: text_indentation() takes 1 positional argument but ...

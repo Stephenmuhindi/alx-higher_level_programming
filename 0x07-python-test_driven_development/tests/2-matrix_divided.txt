@@ -1,0 +1,34 @@
+# testcases for question 1
+
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], 3)
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+>>> zerofullList = ([[0, 0, 0], [4, 5, 6]])
+>>> matrix_divided(zerofullList, 3)
+[[0.0, 0.0, 0.0], [1.33, 1.67, 2.0]]
+
+>>> not_matrix = ([1, 2, 3], [4, 5, 6])
+>>> matrix_divided(not_matrix, 3)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> not_all_num = ([[1, 'a', 3], [4, 5, 'b']])
+>>> matrix_divided(not_all_num, 3)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix = ([[1, 2, 3], [4, 5, 6]])
+>>> print(matrix_divided(matrix, 0))
+Traceback (most recent call last):
+...
+ZeroDivisionError: division by zero
+
+>>> diff_len = ([[1, 2, 3], [4, 5]])
+>>> matrix_divided(diff_len, 3)
+Traceback (most recent call last):
+...
+TypeError: Each row of the matrix must have the same size
