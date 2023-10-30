@@ -80,7 +80,6 @@ class Rectangle:
                 rectangle.append("#")
             rectangle.append("\n")
 
-        # remove blank line
         rectangle.pop()
 
         return "".join(rectangle)
