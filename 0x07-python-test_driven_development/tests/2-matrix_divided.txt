@@ -5,6 +5,10 @@
 >>> matrix_divided([[1, 2, 3], [4, 5, 6]], 3)
 [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 
+>>> matrix = [[1, 2, 3], [4, 5, 6]]
+>>> print(matrix_divided(matrix, 3))
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
 >>> zerofullList = ([[0, 0, 0], [4, 5, 6]])
 >>> matrix_divided(zerofullList, 3)
 [[0.0, 0.0, 0.0], [1.33, 1.67, 2.0]]
@@ -33,12 +37,12 @@ Traceback (most recent call last):
 ...
 TypeError: Each row of the matrix must have the same size
 
->>> matrix_divided(noneL, 3)
+>>> m_a = [1, 2, 3, 4]
+>>> m_b = [[5, 6], [7, 8]]
+>>> matrix_divided(m_a, m_b)
 Traceback (most recent call last):
 ...
 TypeError: matrix must be a matrix (list of lists) of integers/floats
 
->>> matrix_divided(empty_list, 2)
-Traceback (most recent call last):
-...
-TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix_divided([[1, 2, 3]], 2)
+[[0.5, 1.0, 1.5]]
