@@ -79,13 +79,38 @@ uneven m_a matrix
 	...
 	ValueError: m_a and m_b can't be multiplied
 
-passing
-    >>> m_a = [[1, 2], [3, 4]]
-    >>> m_b = [[5, 6], [7, 8]]
-    >>> matrix_mul(m_a, m_b)
-    [[19, 22], [43, 50]]
+failed
+	>>> m_a = 'hol'
+	>>> m_b = [[5, 6], [7, 8]]
+	>>> matrix_mul(m_a, m_b)
+	Traceback (most recent call last):
+        ...
+        TypeError: m_a must be a list or m_b must be a list
 
-    >>> m_a = [[1, 2]]
-    >>> m_b = [[3, 4], [5, 6]]
-    >>> matrix_mul(m_a, m_b)
-    [[13, 16]]
+	>>> m_a = [[5, 6], [7, 8]]
+	>>> m_b = 'hol'
+	>>> matrix_mul(m_a, m_b)
+	Traceback (most recent call last):
+        ...
+        TypeError: m_a must be a list or m_b must be a list
+
+	>>> m_a = [[]]
+	>>> m_b = [[5, 6], [7, 8]]
+	>>> matrix_mul(m_a, m_b)
+	Traceback (most recent call last):
+	...
+	ValueError: m_a and m_b can't be multiplied
+
+	>>> m_a = [[5, 6], [7, 8]]
+	>>> m_b = [[]]
+	>>> matrix_mul(m_a, m_b)
+	Traceback (most recent call last):
+	...
+	ValueError: m_a and m_b can't be multiplied
+
+	>>> m_a = [[5, 6, 10], [7, 8]]
+	>>> m_b = [[5, 6], [7, 8]]
+	>>> matrix_mul(m_a, m_b)
+	Traceback (most recent call last):
+	...
+	TypeError: Each row of m_a must be of the same size
