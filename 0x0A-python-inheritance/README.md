@@ -1,0 +1,1 @@
+The name BaseClassName must be defined in a namespace accessible from the scope containing the derived class definition. In place of a base class name, other arbitrary expressions are also allowed. 0x0A-python-inheritance
