@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+func def
+"""
+
 
 class MyList(list):
     """Class with method instance"""
