@@ -5,10 +5,7 @@ mod def
 
 
 def read_lines(filename="", nb_lines=0):
-    """
-    scans and displays content
-    """
-
+    """scans and displays content"""
     lines = 0
     with open(filename) as f:
         for lin in f:
