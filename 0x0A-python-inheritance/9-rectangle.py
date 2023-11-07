@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+mod def
+"""
+
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 """
 module func def
