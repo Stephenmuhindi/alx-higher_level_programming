@@ -1,18 +1,18 @@
 #!/usr/bin/python3
-
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 """
-func def
+module func def
 """
 
 
 class Rectangle(BaseGeometry):
     """
-    classdef
+    base geomerty def
     """
+
     def __init__(self, width, height):
         """
-        Method
+        initializing method
         """
         self.integer_validator("width", width)
         self.__width = width
@@ -21,13 +21,12 @@ class Rectangle(BaseGeometry):
 
     def area(self):
         """
-        Method2
+        area def
         """
         return self.__width * self.__height
 
     def __str__(self):
         """
-        __str__
+        str methd
         """
-
         return "[Rectangle] {}/{}".format(self.__width, self.__height)
