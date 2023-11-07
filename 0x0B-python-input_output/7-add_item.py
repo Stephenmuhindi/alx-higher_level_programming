@@ -10,7 +10,7 @@ load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
 def add_items():
     """
-    add items def
+    method def
     """
     filename = "add_item.json"
     if path.isfile(filename):
