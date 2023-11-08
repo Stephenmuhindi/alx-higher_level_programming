@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+mod def
+"""
+
 
 class BaseGeometry:
     """
@@ -20,6 +24,7 @@ class BaseGeometry:
         if value <= 0:
             raise ValueError(f"{name} must be greater than 0")
 
+
 class Rectangle(BaseGeometry):
     """
     Rectangle class
@@ -39,6 +44,7 @@ class Rectangle(BaseGeometry):
         Calculate the area of the rectangle
         """
         return self.__width * self.__height
+
 
 class Square(Rectangle):
     """
