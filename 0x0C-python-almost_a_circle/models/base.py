@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """ mod def"""
+from turtle import Turtle, Screen
+import doctest
 from json import dumps, loads
 import csv
 import os
@@ -108,3 +110,41 @@ class Base:
                 return instances
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draw all Rectangles and Squares using Turtle graphics module"""
+        screen = Screen()
+        screen.bgcolor("black")
+
+        pen = Turtle()
+        pen.speed(2)
+        pen.size(10)
+        pen.color("cyan1")
+
+        for rectangle in list_rectangles:
+            pen.penup()
+            pen.goto(rectangle.x, rectangle.y)
+            pen.pendown()
+            pen.forward(rectangle.width)
+            pen.left(90)
+            pen.forward(rectangle.height)
+            pen.left(90)
+            pen.forward(rectangle.width)
+            pen.left(90)
+            pen.forward(rectangle.height)
+            pen.left(90)
+
+        for square in list_squares:
+            pen.penup()
+            pen.goto(square.x, square.y)
+            pen.pendown()
+            for _ in range(4):
+                pen.forward(square.size)
+                pen.left(90)
+
+        screen.mainloop()
+
+
+if __name__ == "__main__":
+    Base.draw(list_rectangles, list_squares)
