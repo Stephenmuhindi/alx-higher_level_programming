@@ -69,8 +69,8 @@ class Rectangle(Base):
 
     def display(self):
         """7-print rect"""
-        s = '$\n' * self.y + \
-            (' ' * self.x + '#' * self.width + '$\n') * self.height
+        s = '\n' * self.y + \
+            (' ' * self.x + '#' * self.width + '\n') * self.height
         print(s, end='')
 
     def __str__(self):

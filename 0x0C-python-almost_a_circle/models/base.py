@@ -146,5 +146,5 @@ class Base:
         screen.mainloop()
 
 
-if __name__ == "__main__":
-    Base.draw(list_rectangles, list_squares)
+#if __name__ == "__main__":
+#    Base.draw(list_rectangles, list_squares)
