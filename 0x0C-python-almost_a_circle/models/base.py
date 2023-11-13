@@ -5,6 +5,7 @@ import doctest
 from json import dumps, loads
 import csv
 import os
+from models.rectangle import Rectangle
 
 
 class Base:
@@ -146,5 +147,7 @@ class Base:
         screen.mainloop()
 
 
-#if __name__ == "__main__":
-#    Base.draw(list_rectangles, list_squares)
+"""
+if __name__ == "__main__":
+    Base.draw(list_rectangles, list_squares)
+"""

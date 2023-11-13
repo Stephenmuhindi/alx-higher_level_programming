@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """mod def"""
 from models.rectangle import Rectangle
+from models.base import Base
+from models.square import Square
 
 
 class Square(Rectangle):
