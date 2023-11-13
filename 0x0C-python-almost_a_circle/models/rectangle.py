@@ -1,108 +1,229 @@
 #!/usr/bin/python3
-""" mod def"""
+"""
+mod def
+"""
 from models.base import Base
-from models.rectangle import Rectangle
-from models.square import Square
 
 
 class Rectangle(Base):
-    """class def"""
+    """
+    class method documentation
+    """
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """ init"""
-        super().__init__(id)
+        """
+        method documentation
+        """
+
         self.width = width
         self.height = height
         self.x = x
         self.y = y
 
+        super().__init__(id)
+
     @property
     def width(self):
-        """ width"""
+        """
+        method documentation
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
-        self.validate_integer("width", value, False)
+        """
+        method documentation
+        """
+        self.all_checks("width", value)
         self.__width = value
 
     @property
     def height(self):
-        """ height"""
+        """
+        method documentation
+        """
+
         return self.__height
 
     @height.setter
     def height(self, value):
-        self.validate_integer("height", value, False)
+        """
+        method documentation
+        """
+
+        self.all_checks("height", value)
         self.__height = value
 
     @property
     def x(self):
-        """ x"""
+        """
+        method documentation
+        """
+
         return self.__x
 
     @x.setter
     def x(self, value):
-        self.validate_integer("x", value)
+        """
+        method documentation
+        """
+
+        self.all_checks("x", value)
         self.__x = value
 
     @property
     def y(self):
-        """y"""
+        """
+        method documentation
+        """
+
         return self.__y
 
     @y.setter
     def y(self, value):
-        self.validate_integer("y", value)
+        """
+        method documentation
+        """
+
+        self.all_checks("y", value)
         self.__y = value
 
-    def validate_integer(self, name, value, eq=True):
-        """validate method"""
-        if type(value) != int:
-            raise TypeError("{} must be an integer".format(name))
-        if eq and value < 0:
-            raise ValueError("{} must be >= 0".format(name))
-        elif not eq and value <= 0:
-            raise ValueError("{} must be > 0".format(name))
+    def all_checks(self, attribute, value):
+        """
+        method documentation
+        """
+
+        self.type_int_check(attribute, value)
+        if attribute == 'x' or attribute == 'y':
+            self.negative_check(attribute, value)
+        else:
+            self.zero_and_negative_check(attribute, value)
+
+    def attribute_check(self, attribute):
+        """
+        method documentation
+        """
+
+        if type(attribute) is not str:
+            raise TypeError("attribute must be of type str")
+
+    def zero_and_negative_check(self, attribute, value):
+        """
+        method documentation
+        """
+
+        self.attribute_check(attribute)
+        if value <= 0:
+            raise ValueError("{} must be > 0".format(attribute))
+
+    def negative_check(self, attribute, value):
+        """
+        method documentation
+        """
+
+        self.attribute_check(attribute)
+        if value < 0:
+            raise ValueError("{} must be >= 0".format(attribute))
+
+    def type_int_check(self, attribute, value):
+        """
+        method documentation
+        """
+
+        self.attribute_check(attribute)
+        if type(value) is not int:
+            raise TypeError("{} must be an integer".format(attribute))
 
     def area(self):
-        """area"""
+        """
+        Area
+        """
         return self.width * self.height
 
     def display(self):
-        """7-print rect"""
-        s = '\n' * self.y + \
-            (' ' * self.x + '#' * self.width + '\n') * self.height
-        print(s, end='')
+        """
+        method documentation
+        """
+
+        rectangle = ""
+        for y in range(self.y):
+            rectangle += "\n"
+        for i in range(self.__height):
+            rectangle += (" " * self.x) + ("#" * self.width)
+            if i != (self.height - 1):
+                rectangle += "\n"
+        print(rectangle)
 
     def __str__(self):
-        """12str"""
-        return '[{}] ({}) {}/{} - {}/{}'.\
-            format(type(self).__name__, self.id, self.x, self.y, self.width,
-                   self.height)
-
-    def __update(self, id=None, width=None, height=None, x=None, y=None):
-        """ method"""
-        if x is not None:
-            self.x = x
-        if y is not None:
-            self.y = y
-        if id is not None:
-            self.id = id
-        if height is not None:
-            self.height = height
-        if width is not None:
-            self.width = width
+        """str mode"""
+        str_s = "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}"
+        return str_s.format(self.id, self.x, self.y, self.width, self.height)
 
     def update(self, *args, **kwargs):
-        """ instance attribute update"""
-        # print(args, kwargs)
-        if args:
-            self.__update(*args)
+        """
+        method documentation
+        """
+        if args and len(args) != 0:
+            if len(args) >= 1:
+                self.id = args[0]
+            if len(args) >= 2:
+                self.width = args[1]
+            if len(args) >= 3:
+                self.height = args[2]
+            if len(args) >= 4:
+                self.x = args[3]
+            if len(args) >= 5:
+                self.y = args[4]
         elif kwargs:
-            self.__update(**kwargs)
+            valid_attributes = ['id', 'width', 'height', 'x', 'y']
+            for key, value in kwargs.items():
+                if key in valid_attributes:
+                    exec("self.{} = {}".format(key, value))
 
     def to_dictionary(self):
-        """print x,y,id,height width"""
-        return {"x": self.__x, "y": self.__y, "id": self.id,
-                "height": self.__height, "width": self.__width}
+        """
+        method documentation
+        """
+        return {
+                'x': self.x,
+                'y': self.y,
+                'id': self.id,
+                'height': self.height,
+                'width': self.width
+                }
+
+    def __eq__(self, other):
+        """
+        method documentation
+        """
+        return self.area() == other.area()
+
+    def __ne__(self, other):
+        """
+        method documentation
+        """
+        return self.area() != other.area()
+
+    def __lt__(self, other):
+        """
+        method documentation
+        """
+        return self.area() < other.area()
+
+    def __le__(self, other):
+        """
+        method documentation
+        """
+        return self.area() <= other.area()
+
+    def __ge__(self, other):
+        """
+        method documentation
+        """
+        return self.area() >= other.area()
+
+    def __gt__(self, other):
+        """
+        method documentation
+        """
+        return self.area() > other.area()

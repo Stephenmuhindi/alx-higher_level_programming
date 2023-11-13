@@ -1,51 +1,70 @@
 #!/usr/bin/python3
-"""mod def"""
+"""
+mod def
+"""
 from models.rectangle import Rectangle
-from models.base import Base
-from models.square import Square
 
 
 class Square(Rectangle):
-    """ class def"""
+    """
+    class method documentation
+    """
 
     def __init__(self, size, x=0, y=0, id=None):
-        """init"""
-        super().__init__(size, size, x, y, id)
+        """
+        method documentation
+        """
 
-    def __str__(self):
-        """ str """
-        return '[{}] ({}) {}/{} - {}'.\
-            format(type(self).__name__, self.id, self.x, self.y, self.width)
+        super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
-        """size"""
+        """
+        method documentation
+        """
         return self.width
 
     @size.setter
     def size(self, value):
+        """
+        method documentation
+        """
+
         self.width = value
         self.height = value
 
-    def __update(self, id=None, size=None, x=None, y=None):
-        """ update"""
-        if id is not None:
-            self.id = id
-        if size is not None:
-            self.size = size
-        if x is not None:
-            self.x = x
-        if y is not None:
-            self.y = y
+    def __str__(self):
+        """str func"""
+        s = "[Square] ({:d}) {:d}/{:d} - {:d}"
+        return s.format(self.id, self.x, self.y, self.width)
 
     def update(self, *args, **kwargs):
-        """Updates instance"""
-        if args:
-            self.__update(*args)
+        """
+        method documentation
+        """
+
+        if args and len(args) != 0:
+            if len(args) >= 1:
+                self.id = args[0]
+            if len(args) >= 2:
+                self.width = args[1]
+                self.height = args[1]
+            if len(args) >= 3:
+                self.x = args[2]
+            if len(args) >= 4:
+                self.y = args[3]
         elif kwargs:
-            self.__update(**kwargs)
+            valid_attributes = ['id', 'size', 'x', 'y']
+            for key, value in kwargs.items():
+                if key in valid_attributes:
+                    if key == 'size':
+                        for i in ["width", "height"]:
+                            exec("self.{} = {}".format(i, value))
+                            continue
+                    exec("self.{} = {}".format(key, value))
 
     def to_dictionary(self):
-        """ class dict"""
-        return {"id": self.id, "x": self.x,
-                "size": self.width, "y": self.y}
+        """
+        method documentation
+        """
+        return {'id': self.id, 'x': self.x, 'size': self.width, 'y': self.y}
