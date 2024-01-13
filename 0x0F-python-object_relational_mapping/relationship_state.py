@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-represents a column of an auto-generated,
-unique integer,
+auto-generated,unique integer,
 can’t be null and is a primary key
 """
 

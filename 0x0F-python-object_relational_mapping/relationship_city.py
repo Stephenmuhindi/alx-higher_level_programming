@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-relationship tableau for cities using decla
+relationship table for cities using decla
 """
 
 from sqlalchemy import Column, Integer, String, ForeignKey
@@ -8,7 +8,7 @@ from model_city import City
 from relationship_state import Base
 
 class City(Base):
-    """tableau de cities blah"""
+    """ i thnk this was the problem"""
     __tablename__ = 'cities'
 
     id = Column(Integer, nullable=False, primary_key=True,
