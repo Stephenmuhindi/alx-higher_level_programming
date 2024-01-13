@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-relationship table for cities using decla
+for cities using declaraton
 """
 
 from sqlalchemy import Column, Integer, String, ForeignKey
