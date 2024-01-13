@@ -8,7 +8,7 @@ from model_city import City
 from relationship_state import Base
 
 class City(Base):
-    """tableau de cities"""
+    """tableau de cities blah"""
     __tablename__ = 'cities'
 
     id = Column(Integer, nullable=False, primary_key=True,

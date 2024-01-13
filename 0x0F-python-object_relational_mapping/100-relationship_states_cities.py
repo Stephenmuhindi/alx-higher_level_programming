@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-haieleweki hata kidogo
+haieleweki hata kidogo i dont get
 """
 from sys import argv
 from relationship_state import Base, State
