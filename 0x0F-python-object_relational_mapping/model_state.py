@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 """
 a python file that contains
-class definition of a State
-an instance 
-Base = declarative_base()
+class definition
 """
 
 from sqlalchemy import Column, Integer, String
