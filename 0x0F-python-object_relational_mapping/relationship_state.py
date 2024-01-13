@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 """
 auto-generated,unique integer,
-can’t be null and is a primary key
 """
-
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, backref

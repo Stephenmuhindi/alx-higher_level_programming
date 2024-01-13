@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-i thnk this was the problemo i dont get
+i thnk this was the problem i dont get
 """
 from sys import argv
 from relationship_state import Base, State
