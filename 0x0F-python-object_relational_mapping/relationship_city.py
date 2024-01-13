@@ -5,7 +5,7 @@ relationship tableau for cities using decla
 
 from sqlalchemy import Column, Integer, String, ForeignKey
 from model_city import City
-
+from relationship_state import Base
 
 class City(Base):
     """tableau de cities"""
